@@ -1,27 +1,36 @@
 package com.streetmart.deliverytimes.ui.main
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.streetmart.deliverytimes.R
+import com.streetmart.deliverytimes.databinding.MainFragmentBinding
+import com.streetmart.deliverytimes.viewModel.ProductsViewModel
 import kotlinx.android.synthetic.main.main_fragment.*
 
-class MainFragment : Fragment() {
+class ProductsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = ProductsFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var productsViewModel: ProductsViewModel
+//    var binding:MainFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val binding = DataBindingUtil.inflate<MainFragmentBinding>(
+            inflater, R.layout.main_fragment,
+            container,
+            false
+        )
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
@@ -34,8 +43,8 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+        productsViewModel =  ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+
     }
 
 }

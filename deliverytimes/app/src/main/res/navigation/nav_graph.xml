@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.streetmart.deliverytimes.ui.main.MainFragment"
+        android:name="com.streetmart.deliverytimes.ui.main.ProductsFragment"
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" >
         <action

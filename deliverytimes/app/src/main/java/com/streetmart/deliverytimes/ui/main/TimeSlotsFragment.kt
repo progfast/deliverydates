@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.streetmart.deliverytimes.R
+import com.streetmart.deliverytimes.viewModel.TimeSlotsViewModel
 
 class TimeSlotsFragment : Fragment() {
 

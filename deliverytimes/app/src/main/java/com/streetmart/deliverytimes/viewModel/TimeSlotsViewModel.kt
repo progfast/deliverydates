@@ -1,4 +1,4 @@
-package com.streetmart.deliverytimes.ui.main
+package com.streetmart.deliverytimes.viewModel
 
 import androidx.lifecycle.ViewModel
 

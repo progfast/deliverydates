@@ -3,6 +3,7 @@
     package="com.streetmart.deliverytimes">
 
     <application
+        android:name=".DeliveryTimesApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
