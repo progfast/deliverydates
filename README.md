@@ -6,6 +6,7 @@
 - MVVM 
 - DataBinding
 - LiveData
+- Navigation
 
 **CI/CD**
 - TBD
