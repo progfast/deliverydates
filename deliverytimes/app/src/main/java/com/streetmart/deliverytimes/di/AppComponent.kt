@@ -1,6 +1,7 @@
 package com.streetmart.deliverytimes.di
 
 import com.streetmart.deliverytimes.DeliveryTimesApp
+import com.streetmart.deliverytimes.repository.ProductRepository
 import com.streetmart.deliverytimes.viewModel.ProductsViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -11,4 +12,5 @@ interface AppComponent {
 
     fun inject(target: DeliveryTimesApp)
     fun inject(target: ProductsViewModel)
+    fun inject(target: ProductRepository)
 }

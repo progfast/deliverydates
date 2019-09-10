@@ -1,11 +1,13 @@
 package com.streetmart.deliverytimes.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.streetmart.deliverytimes.R
@@ -20,13 +22,13 @@ class ProductsFragment : Fragment() {
     }
 
     private lateinit var productsViewModel: ProductsViewModel
-//    var binding:MainFragmentBinding
+    lateinit var binding:MainFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = DataBindingUtil.inflate<MainFragmentBinding>(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.main_fragment,
             container,
             false
@@ -44,6 +46,13 @@ class ProductsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         productsViewModel =  ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+        productsViewModel.loadProducts().observe(viewLifecycleOwner, Observer { apiResponse ->
+//            Log.i("response","${products.products}")
+            when(apiResponse.products){
+
+            }
+
+        })
 
     }
 
