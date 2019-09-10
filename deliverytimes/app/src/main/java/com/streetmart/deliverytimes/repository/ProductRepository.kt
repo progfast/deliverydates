@@ -19,7 +19,7 @@ class ProductRepository {
         DeliveryTimesApp.component.inject(this)
     }
 
-    fun fetchProducts(): LiveData<ApiResponse> {
+    fun fetchProducts(): MutableLiveData<ApiResponse> {
         val apiResponse = MutableLiveData<ApiResponse>()
         val call = webService.fetchProducts()
         call.enqueue(object : retrofit2.Callback<List<Product>> {

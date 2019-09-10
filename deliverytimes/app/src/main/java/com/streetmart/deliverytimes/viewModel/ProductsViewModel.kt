@@ -10,13 +10,12 @@ import javax.inject.Inject
 class ProductsViewModel : ViewModel() {
     @Inject
     lateinit var productRepository: ProductRepository
-        private val apiResult: MutableLiveData<ApiResponse> by lazy { MutableLiveData<ApiResponse>() }
+    private var apiResult: MutableLiveData<ApiResponse>
 
     init {
         DeliveryTimesApp.component.inject(this)
 
-        val apiResponse = productRepository.fetchProducts()
-        apiResult.value = apiResponse.value
+        apiResult = productRepository.fetchProducts()
     }
 
     fun loadProducts() = apiResult

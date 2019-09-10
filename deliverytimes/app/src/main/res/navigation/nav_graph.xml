@@ -9,14 +9,19 @@
         android:id="@+id/mainFragment"
         android:name="com.streetmart.deliverytimes.ui.main.ProductsFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_openTimeSlots"
-            app:destination="@id/timeSlotsFragment" />
+            app:destination="@id/timeSlotsFragment">
+        </action>
     </fragment>
     <fragment
         android:id="@+id/timeSlotsFragment"
         android:name="com.streetmart.deliverytimes.ui.main.TimeSlotsFragment"
         android:label="time_slots_fragment"
-        tools:layout="@layout/time_slots_fragment" />
+        tools:layout="@layout/time_slots_fragment">
+        <argument
+            android:name="product"
+            app:argType="com.streetmart.deliverytimes.model.Product" />
+    </fragment>
 </navigation>
