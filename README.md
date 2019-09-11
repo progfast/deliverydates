@@ -7,6 +7,7 @@
 - DataBinding
 - LiveData
 - Navigation
+  - Passing data through arguments and SafeArguments
 
 **CI/CD**
 - TBD
