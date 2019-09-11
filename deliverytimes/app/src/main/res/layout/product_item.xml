@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -22,15 +23,31 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#424242"
+            android:padding="@dimen/test_padding"
             android:onClick="@{() -> clickListener.onItemClick(product)}">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                tools:text="Product name"
+                android:textColor="@android:color/white"
+                android:layout_centerVertical="true"
+
                 android:text="@{product.name}" />
+
+            <TextView
+                android:layout_below="@id/tv_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Product Type"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="6dp"
+                android:textSize="12sp"
+                android:text="@{product.productType}" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

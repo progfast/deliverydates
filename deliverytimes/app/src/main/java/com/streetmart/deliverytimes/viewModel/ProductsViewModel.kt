@@ -10,13 +10,14 @@ import javax.inject.Inject
 class ProductsViewModel : ViewModel() {
     @Inject
     lateinit var productRepository: ProductRepository
-    private var apiResult: MutableLiveData<ApiResponse>
 
     init {
         DeliveryTimesApp.component.inject(this)
-
-        apiResult = productRepository.fetchProducts()
     }
 
-    fun loadProducts() = apiResult
+    fun retry() =
+        productRepository.fetchProducts()
+
+
+    fun loadProducts() = productRepository.fetchProducts()
 }

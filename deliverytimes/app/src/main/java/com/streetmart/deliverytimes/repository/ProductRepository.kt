@@ -26,6 +26,8 @@ class ProductRepository {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 if (response.isSuccessful) {
                     apiResponse.value = ApiResponse.create(response.body())
+                } else {
+                    apiResponse.value = ApiResponse.create(Throwable(response.message()))
                 }
             }
 

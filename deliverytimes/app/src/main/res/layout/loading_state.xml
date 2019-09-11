@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.streetmart.deliverytimes.api.ApiResponse" />
+
+        <import type="com.streetmart.deliverytimes.util.Status" />
+
+        <variable
+            name="status"
+            type="Status" />
+
+        <variable
+            name="message"
+            type="String" />
+
+        <variable
+            name="callback"
+            type="com.streetmart.deliverytimes.util.RetryCallback" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        app:visible="@{status != Status.SUCCESS}">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:visible="@{status == Status.LOADING}" />
+
+        <Button
+            android:id="@+id/retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> callback.retry()}"
+            android:text="@string/retry"
+            app:visible="@{status == Status.ERROR}" />
+
+        <TextView
+            android:id="@+id/error_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="@{message ?? @string/unknown_error}"
+            app:visible="@{status == Status.ERROR}" />
+    </LinearLayout>
+</layout>
+

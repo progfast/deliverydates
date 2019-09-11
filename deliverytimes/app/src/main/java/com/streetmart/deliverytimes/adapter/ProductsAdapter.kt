@@ -9,7 +9,7 @@ import com.streetmart.deliverytimes.databinding.ProductItemBinding
 import com.streetmart.deliverytimes.model.Product
 import com.streetmart.deliverytimes.util.ItemClickListener
 
-class ProductsAdapter(private val dataList: List<Product>) :
+class ProductsAdapter(private var dataList: List<Product>) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
     private var clickListener: ItemClickListener? = null
@@ -27,6 +27,10 @@ class ProductsAdapter(private val dataList: List<Product>) :
         return ViewHolder(binding, clickListener)
     }
 
+    fun updateData(updatedDataList:List<Product>){
+        dataList = updatedDataList
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindData(dataList[position])
     }
