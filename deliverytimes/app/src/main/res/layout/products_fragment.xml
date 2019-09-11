@@ -51,6 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/tv_choose_product_text"
+                android:layout_above="@id/btn_all_time_slots"
+                android:layout_marginBottom="@dimen/list_top_margin"
                 android:layout_marginTop="@dimen/list_top_margin"
                 app:layoutManager="LinearLayoutManager"
                 tools:listitem="@layout/product_item" />
@@ -63,6 +65,14 @@
                 app:callback="@{() -> retryCallback.retry()}"
                 app:message="@{errorMessage}"
                 app:status="@{status}" />
+
+            <Button
+                android:id="@+id/btn_all_time_slots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="@string/all_deliveries"
+                android:layout_alignParentBottom="true"/>
 
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

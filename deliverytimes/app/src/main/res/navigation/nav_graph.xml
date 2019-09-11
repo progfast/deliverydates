@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.streetmart.deliverytimes.ui.main.ProductsFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment">
+        tools:layout="@layout/products_fragment">
         <action
             android:id="@+id/action_openTimeSlots"
             app:destination="@id/timeSlotsFragment">
@@ -21,7 +21,10 @@
         android:label="time_slots_fragment"
         tools:layout="@layout/time_slots_fragment">
         <argument
-            android:name="product"
-            app:argType="com.streetmart.deliverytimes.model.Product" />
+            android:name="products"
+            app:argType="com.streetmart.deliverytimes.model.Products" />
+        <argument
+            android:name="title"
+            app:argType="string"/>
     </fragment>
 </navigation>

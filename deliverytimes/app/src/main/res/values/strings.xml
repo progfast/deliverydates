@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">DeliveryTimes</string>
     <string name="products_page_heading">Chose a product</string>
+    <string name="times_page_heading">Time slots</string>
     <string name="retry">Retry</string>
     <string name="unknown_error">Unknown error</string>
     <string name="no_items">No items found</string>
+    <string name="all_deliveries">All Products</string>
 </resources>

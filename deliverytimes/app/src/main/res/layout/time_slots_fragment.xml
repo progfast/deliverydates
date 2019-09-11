@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.TimeSlotsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_name"
+    <data>
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:background="@drawable/products_bg"
+        android:padding="@dimen/item_padding"
+        tools:context=".ui.main.ProductsFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_choose_product_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{title + ` time slots`}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/heading" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_products"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_choose_product_text"
+            android:layout_marginTop="@dimen/list_top_margin"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/product_item" />
+
+
+    </RelativeLayout>
+</layout>

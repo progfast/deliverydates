@@ -6,33 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.streetmart.deliverytimes.R
 import com.streetmart.deliverytimes.adapter.ProductsAdapter
-import com.streetmart.deliverytimes.api.ApiResponse
-import com.streetmart.deliverytimes.databinding.MainFragmentBinding
+import com.streetmart.deliverytimes.databinding.ProductsFragmentBinding
 import com.streetmart.deliverytimes.model.Product
+import com.streetmart.deliverytimes.model.Products
 import com.streetmart.deliverytimes.util.ItemClickListener
 import com.streetmart.deliverytimes.util.RetryCallback
 import com.streetmart.deliverytimes.util.Status
 import com.streetmart.deliverytimes.viewModel.ProductsViewModel
-import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.products_fragment.*
 
 class ProductsFragment : Fragment() {
 
     private lateinit var productsViewModel: ProductsViewModel
-    lateinit var binding: MainFragmentBinding
+    lateinit var binding: ProductsFragmentBinding
+    lateinit var products: List<Product>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.main_fragment,
+            inflater, R.layout.products_fragment,
             container,
             false
         )
@@ -54,6 +53,13 @@ class ProductsFragment : Fragment() {
             }
         }
         loadData()
+        btn_all_time_slots.setOnClickListener {
+            if (::products.isInitialized) navigateToTimes(
+                products,
+                getString(R.string.all_deliveries)
+            )
+        }
+
     }
 
     private fun loadData() {
@@ -61,6 +67,7 @@ class ProductsFragment : Fragment() {
         productsViewModel.loadProducts().observe(viewLifecycleOwner, Observer { apiResponse ->
 
             apiResponse.products?.let {
+                products = it
                 initAndSetData(it)
             } ?: run {
                 showError(apiResponse.errorMessage)
@@ -98,9 +105,16 @@ class ProductsFragment : Fragment() {
 
     private val clickListener = object : ItemClickListener {
         override fun onItemClick(product: Product) {
-            val action = ProductsFragmentDirections.actionOpenTimeSlots(product)
-            rv_products.findNavController().navigate(action)
+            navigateToTimes(listOf(product), product.name)
         }
+    }
+
+    private fun navigateToTimes(products: List<Product>, title: String) {
+        val action = ProductsFragmentDirections.actionOpenTimeSlots(
+            Products(products),
+            title
+        )
+        rv_products.findNavController().navigate(action)
     }
 
 }
