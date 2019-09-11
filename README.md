@@ -3,11 +3,12 @@
 
 - Dagger2
 - Retrofit
-- MVVM 
+- MVVM
 - DataBinding
 - LiveData
 - Navigation
   - Passing data through arguments and SafeArguments
+- Coroutines
 
 **CI/CD**
 - TBD
@@ -16,7 +17,7 @@
 
 **e2e tests/automated tests**
 - TBD
-  - Write e2e using appium and then run it on browserstack. 
+  - Write e2e using appium and then run it on browserstack.
 
 **Data source**
 It is fetching list of products from https://progfast.github.io/products.json

@@ -27,10 +27,6 @@ class ProductsAdapter(private var dataList: List<Product>) :
         return ViewHolder(binding, clickListener)
     }
 
-    fun updateData(updatedDataList:List<Product>){
-        dataList = updatedDataList
-        notifyDataSetChanged()
-    }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindData(dataList[position])
     }

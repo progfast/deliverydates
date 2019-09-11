@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import com.streetmart.deliverytimes.R
+import com.streetmart.deliverytimes.adapter.DeliveryTimeAdapter
 import com.streetmart.deliverytimes.databinding.TimeSlotsFragmentBinding
 import com.streetmart.deliverytimes.viewModel.TimeSlotsViewModel
 
@@ -38,6 +40,15 @@ class TimeSlotsFragment : Fragment() {
         val products = args.products
         val title = args.title
         binding.title = title
+
+        viewModel.fetchDeliveryTimes("19551", products.products)
+            .observe(viewLifecycleOwner, Observer { deliveryTimes ->
+                binding.rvDeliveryTimes.apply {
+                    val deliveryTimeAdapter = DeliveryTimeAdapter(deliveryTimes)
+                    adapter = deliveryTimeAdapter
+                }
+            })
+
 
     }
 

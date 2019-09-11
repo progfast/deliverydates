@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="deliveryTime"
+            type="com.streetmart.deliverytimes.model.DeliveryTime" />
+
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#424242"
+            android:padding="@dimen/test_padding">
+
+            <TextView
+                android:id="@+id/tv_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@{deliveryTime.deliveryDate}"
+                android:textColor="@android:color/white"
+                tools:text="Product name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="6dp"
+                android:text="Green"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="12sp"
+                app:visible="@{deliveryTime.greenDelivery}"
+                tools:text="Green" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
