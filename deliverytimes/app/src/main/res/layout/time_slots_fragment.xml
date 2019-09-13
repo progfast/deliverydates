@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="title"
             type="String" />
+
+        <variable
+            name="visible"
+            type="Boolean" />
     </data>
 
     <RelativeLayout
@@ -32,6 +37,13 @@
             android:layout_marginTop="@dimen/list_top_margin"
             app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/product_item" />
+
+        <include
+            layout="@layout/empty_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:visible="@{visible}" />
 
 
     </RelativeLayout>

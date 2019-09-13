@@ -46,6 +46,7 @@ class TimeSlotsFragment : Fragment() {
                 binding.rvDeliveryTimes.apply {
                     val deliveryTimeAdapter = DeliveryTimeAdapter(deliveryTimes)
                     adapter = deliveryTimeAdapter
+                    binding.visible = deliveryTimes.isNullOrEmpty()
                 }
             })
 

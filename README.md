@@ -9,6 +9,11 @@
 - Navigation
   - Passing data through arguments and SafeArguments
 - Coroutines
+- Kotlin Extention functions
+- Kotlinn propery accessors
+
+**Unit Tests**
+- TBD --- JUnits along with mockito
 
 **CI/CD**
 - TBD
@@ -21,3 +26,6 @@
 
 **Data source**
 It is fetching list of products from https://progfast.github.io/products.json
+
+**Misc.**
+Is green function is random function to calculate green deliveries
